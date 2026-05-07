@@ -4,7 +4,7 @@
 
 Mục tiêu của bài lab là hoàn thiện chương trình DES trong C++ và mở rộng để hỗ trợ các chế độ chạy theo yêu cầu: DES encrypt, DES decrypt, TripleDES encrypt và TripleDES decrypt. Chương trình nhận dữ liệu nhị phân từ `stdin`, xử lý theo block 64 bit và in kết quả cuối cùng dưới dạng chuỗi bit.
 
-## Thiết kế chương trình
+## Cách làm / Approach / Method
 
 Chương trình được viết trong `des.cpp`. Các thành phần chính gồm:
 
@@ -27,7 +27,9 @@ Với DES, chương trình nhận dữ liệu và một khóa 64 bit. Với Trip
 
 ## Padding và xử lý nhiều block
 
-DES xử lý block 64 bit. Nếu dữ liệu dài hơn 64 bit, chương trình chia dữ liệu thành nhiều block 64 bit và xử lý từng block tuần tự. Nếu block cuối chưa đủ 64 bit, chương trình thêm bit `0` vào cuối cho đủ block. Cách zero padding này đơn giản và phù hợp cho bài học nhập môn. Tuy nhiên, nó không phải cơ chế padding an toàn cho hệ thống thực tế vì có thể khó phân biệt bit `0` thật với bit `0` được thêm vào khi padding.
+DES xử lý block 64 bit. Nếu dữ liệu dài hơn 64 bit, chương trình chia dữ liệu thành nhiều block 64 bit và xử lý từng block tuần tự. Nếu block cuối chưa đủ 64 bit, chương trình thêm bit `0` vào cuối cho đủ block.
+
+Cách zero padding này đơn giản và phù hợp cho bài học nhập môn. Tuy nhiên, nó không phải cơ chế padding an toàn cho hệ thống thực tế vì có thể khó phân biệt bit `0` thật với bit `0` được thêm vào khi padding.
 
 ## TripleDES
 
@@ -56,6 +58,20 @@ Repo có 5 test shell script:
 5. `test_wrong_key_negative.sh`: decrypt bằng key sai và kiểm tra không khôi phục plaintext ban đầu.
 
 Kết quả chạy test được lưu trong `logs/test-output.txt` để làm minh chứng nộp bài.
+
+## Kết quả / Results
+
+Chương trình đã hỗ trợ đủ bốn mode yêu cầu: DES encrypt, DES decrypt, TripleDES encrypt và TripleDES decrypt. Các test kiểm tra sample DES, round-trip, multi-block padding, tamper negative và wrong-key negative đều được thiết kế để xác nhận chương trình hoạt động đúng.
+
+## Hạn chế
+
+Đây là chương trình phục vụ học tập. Chương trình chưa có quản lý khóa an toàn, chưa có xác thực dữ liệu, chưa có IV ngẫu nhiên và chưa dùng mode mã hóa an toàn như CBC, CTR hoặc GCM.
+
+DES cũng không còn phù hợp cho bảo mật thực tế vì kích thước khóa nhỏ. TripleDES mạnh hơn DES nhưng cũng đã lỗi thời trong các hệ thống hiện đại.
+
+## Đạo đức và sử dụng an toàn
+
+Chương trình chỉ được dùng để học thuật toán DES và TripleDES trong phạm vi FIT4012 Lab 4. Không sử dụng chương trình này để tấn công, chặn, sửa hoặc giải mã dữ liệu thật của người khác.
 
 ## Kết luận
 
