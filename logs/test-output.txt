@@ -1,0 +1,10 @@
+bash tests/test_des_sample.sh
+[PASS] DES sample encrypt produced the expected ciphertext.
+bash tests/test_encrypt_decrypt_roundtrip.sh
+[PASS] DES encrypt/decrypt round-trip returned the original plaintext.
+bash tests/test_multiblock_padding.sh
+[PASS] Multi-block encryption and zero padding work correctly.
+bash tests/test_tamper_negative.sh
+[PASS] Tampered ciphertext does not decrypt to the original plaintext.
+bash tests/test_wrong_key_negative.sh
+[PASS] Decryption with the wrong key does not recover the original plaintext.
